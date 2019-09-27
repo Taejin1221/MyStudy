@@ -10,7 +10,8 @@ void InitHeader(DoublyListPtr header) {
 void InsertNode_First(DoublyListPtr header, Data item) {
 	DoublyListPtr newNode = malloc(sizeof(DoublyList));
 	newNode->data = item;
-
+	
+	// if list is empty
 	if (header->next == header) {
 		header->prev = newNode;
 		header->next = newNode;
@@ -25,7 +26,8 @@ void InsertNode_First(DoublyListPtr header, Data item) {
 void InsertNode_Last(DoublyListPtr header, Data item) {
 	DoublyListPtr newNode = malloc(sizeof(DoublyList));
 	newNode->data = item;
-
+	
+	// if list is empty
 	if (header->next == header) {
 		header->prev = newNode;
 		header->next = newNode;

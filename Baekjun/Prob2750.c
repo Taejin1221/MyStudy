@@ -1,4 +1,3 @@
-// Prob#3.c
 // Baekjun 2750
 #include <stdio.h>
 #include <stdlib.h> /* malloc(), free() */

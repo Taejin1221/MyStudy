@@ -1,4 +1,3 @@
-// PBL2.c
 // Baekjun 1920
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,29 +1,29 @@
 // MergeSort O(nlogn)
+#include <stdlib.h>
+
 void Merge(int* arr, int left, int mid, int right) {
 	int startRight = mid + 1;
 
-	int idxLeft = 0, idxRight = 0, idxOrigin = left;
+	int idxLeft, idxRight, idxOrigin = left;
 	int lenLeft = (mid - left) + 1, lenRight = (right - startRight) + 1;
 
-	int* arrLeft = malloc(sizeof(int) * lenLeft);
-	int* arrRight = malloc(sizeof(int) * lenRight);
+	int* arrCopy = malloc(sizeof(int) * (lenLeft + lenRight));
 
 	// Copy left array and right array
-	for (int i = left; i <= mid; i++) arrLeft[i - left] = arr[i];
-	for (int i = startRight; i <= right; i++) arrRight[i - startRight] = arr[i];
+	for (int i = left; i <= right; i++) arrCopy[i - left] = arr[i];
 
-	idxLeft = 0, idxRight = 0;
-	while ((idxLeft < lenLeft) && (idxRight < lenRight))
-		arr[idxOrigin++] = ((arrLeft[idxLeft] <= arrRight[idxRight]) ? (arrLeft[idxLeft++]) : (arrRight[idxRight++]));
+	idxLeft = 0, idxRight = lenLeft;
+	while ((idxLeft < lenLeft) && (idxRight - lenLeft < lenRight))
+		arr[idxOrigin++] = ((arrCopy[idxLeft] <= arrCopy[idxRight]) ? (arrCopy[idxLeft++]) : (arrCopy[idxRight++]));
 
 	// Move left nums
 	while (idxLeft < lenLeft)
-		arr[idxOrigin++] = arrLeft[idxLeft++];
+		arr[idxOrigin++] = arrCopy[idxLeft++];
 
 	while (idxRight < lenRight)
-		arr[idxOrigin++] = arrRight[idxRight++];
+		arr[idxOrigin++] = arrCopy[idxRight++];
 
-	free(arrLeft); free(arrRight);
+	free(arrCopy);
 }
 
 void MergeSort(int* arr, int left, int right) {

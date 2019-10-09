@@ -1,4 +1,4 @@
-// Selection Sort O(n^2)
+/* Selection Sort O(n^2) */
 void SelectionSort(int arr[], int len) {
 	int idx = len - 1;
 

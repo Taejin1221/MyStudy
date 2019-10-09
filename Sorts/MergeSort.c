@@ -1,6 +1,4 @@
-// MergeSort O(nlogn)
-#include <stdlib.h>
-
+/* MergeSort O(nlogn) */
 void Merge(int* arr, int left, int mid, int right) {
 	int startRight = mid + 1;
 

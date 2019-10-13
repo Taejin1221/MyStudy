@@ -23,21 +23,21 @@ int Partition1(int arr[], int left, int right) {
 // pivot is start of array
 int Partition2(int arr[], int left, int right) {
 	int target = arr[left];
-	int low = left + 1, high = left + 1;
+	int low = left, high = left + 1;
 	int temp;
 
 	for (; high <= right; high++) {
 		if (arr[high] < target) {
 			temp = arr[high];
-			arr[high] = arr[low];
-			arr[low++] = temp;
+			arr[high] = arr[++low];
+			arr[low] = temp;
 		}
 	}
 
-	arr[left] = arr[low - 1];
-	arr[low - 1] = target;
+	arr[left] = arr[low];
+	arr[low] = target;
 
-	return low - 1;
+	return low;
 }
 
 void QuickSort(int arr[], int left, int right) {

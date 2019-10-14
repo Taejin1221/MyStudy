@@ -4,8 +4,10 @@
 
 TreeNodePtr InsertNode_Ascending(TreeNodePtr root, Data item) {
 	if (root) {
+		// if data of root is smaller than data of item
 		if (CompareData(root->data, item) > 0)
 			root->left = InsertNode_Ascending(root->left, item);
+		// if data of root is bigger than data of item
 		else if (CompareData(root->data, item) < 0)
 			root->right = InsertNode_Ascending(root->right, item);
 	} else root = CreateNode(item);
@@ -15,8 +17,10 @@ TreeNodePtr InsertNode_Ascending(TreeNodePtr root, Data item) {
 
 TreeNodePtr InsertNode_Descending(TreeNodePtr root, Data item) {
 	if (root) {
+		// if data of root is bigger than data of item
 		if (CompareData(root->data, item) < 0)
 			root->left = InsertNode_Descending(root->left, item);
+		// if data of root is smaller than data of item
 		else if (CompareData(root->data, item) > 0)
 			root->right = InsertNode_Descending(root->right, item);
 	} else root = CreateNode(item);
@@ -24,6 +28,7 @@ TreeNodePtr InsertNode_Descending(TreeNodePtr root, Data item) {
 	return root;
 }
 
+// Leftmost node
 TreeNodePtr MinValueRight(TreeNodePtr root) {
 	TreeNodePtr temp = root;
 	while (temp->left)

@@ -28,6 +28,38 @@ TreeNodePtr InsertNode_Descending(TreeNodePtr root, Data item) {
 	return root;
 }
 
+TreeNodePtr InsertTreeNode_Iterator(TreeNodePtr root, Data item) {
+	TreeNodePtr newNode = malloc(sizeof(TreeNode));
+	newNode->data = data;
+	newNode->left = newNode->right = NULL;
+
+	if (! root) root = newNode;
+	else {
+		TreeNodePtr curr = root;
+		while (1) {
+			// if data of newNode is smaller than data of curr
+			if (CompareData(curr->data, newNode->data) > 0) {
+				if (! curr->left) {
+					curr->left = newNode;
+					break;
+				}
+				else
+					curr = curr->left;
+			}
+			else {
+				if (! curr ->right) {
+					curr->right = newNode;
+					break;
+				}
+				else
+					curr = curr->right;
+			}
+		}
+	}
+
+	return root;
+}
+
 // Leftmost node
 TreeNodePtr MinValueRight(TreeNodePtr root) {
 	TreeNodePtr temp = root;

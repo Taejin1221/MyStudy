@@ -1,6 +1,6 @@
 /* RadixSort.c */
 // before use this sort, define max digit
-#define MAX_DIGIT 
+#define MAX_DIGIT
 
 #define TRUE 1
 #define FALSE 0
@@ -34,10 +34,8 @@ ListNodePtr RadixSort(ListNodePtr head) {
 			// if bucCurr is null
 			if (! bucCurr->front)
 				bucCurr->front = bucCurr->end = curr;
-			else {
-				bucCurr->end->next = curr;
-				bucCurr->end = bucCurr->end->next;
-			}
+			else
+				bucCurr->end = bucCurr->end->next = curr;
 		}
 
 		BucketPtr bucPrev = &bucket[0];
@@ -49,12 +47,11 @@ ListNodePtr RadixSort(ListNodePtr head) {
 			else {
 				if (isHead) {
 					head = bucCurr->front;
-					bucPrev = bucCurr;
 					isHead = FALSE;
-				} else {
+				} else
 					bucPrev->end->next = bucCurr->front;
-					bucPrev = bucCurr;
-				}
+					
+				bucPrev = bucCurr;
 			}
 		}
 		bucPrev->end->next = NULL;

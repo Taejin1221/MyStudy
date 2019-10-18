@@ -102,9 +102,7 @@ TreeNodePtr DeleteNode(TreeNodePtr root, Data item) {
 }
 
 TreeNodePtr Search_Recursion(TreeNodePtr root, Data item) {
-	if (! root) return NULL;
-
-	if (! CompareData(root->data, item))
+	if ((! root) || (! CompareData(root->data, item)))
 		return root;
 	else if (CompareData(root->data, item) > 0)
 		return Search_Recursion(root->left, item);

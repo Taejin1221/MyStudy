@@ -1,10 +1,10 @@
 # RedBlackTree.py
 class TreeNode():
-	def __init__(self, val, nodeColor = 'R', parentNode = None):
+	def __init__(self, val, nodeColor = 'R', parentNode = None, NILNode = None):
 		self.val = val
 		self.color = nodeColor # new Node is Red
 		self.parent = parentNode
-		self.left = self.right = None
+		self.left = self.right = NILNode
 
 	def isLeftChild(self):
 		return (self.parent) and (self.parent.left is self)
@@ -12,55 +12,64 @@ class TreeNode():
 	def isRightChild(self):
 		return (self.parent) and (self.parent.right is self)
 
-	def LeftRotate(self):
-		rightChild = self.right
-		self.right = rightChild.left
-		rightChild.left.parent = self
-		rightChild.left = self
-		if (self.isLeftChild()):
-			self.parent.left = rightChild
-		else:
-			self.parent.right = rightChild
-		rightChild.parent = self.parent
-		self.parent = rightChild
-
-	def RightRotate(self):
-		LeftChild = self.left
-		self.left = LeftChild.right
-		LeftChild.right.parent = self
-		LeftChild.right = self
-		if (self.isLeftChild()):
-			self.parent.left = LeftChild
-		else:
-			self.parent.right = LeftChild
-		LeftChild.parent = self.parent
-		self.parent = LeftChild
-
+NILNode = TreeNode(None, 'B')
 
 class RBTree():
 	def __init__(self):
-		self.root = None
+		self.root = NILNode
 
 	def InsertNode(self, val):
 		def helper(curr, parentNode = None):
 			# if curr is None
-			if (not curr):
+			if (curr is NILNode):
 				# if current node is root
 				if (curr is self.root):
 					# root is black
-					curr = TreeNode(val, nodeColor = 'B')
+					self.root = TreeNode(val, nodeColor = 'B', NILNode = NILNode)
 				else:
-					curr =  TreeNode(val, parentNode = parentNode)
+					curr =  TreeNode(val, parentNode = parentNode, NILNode = NILNode)
+					if (parentNode.val > curr.val):
+						curr.parent.left = curr
+					else:
+						curr.parent.right = curr
 					self.__Balancify(curr)
 			else:
 				if (curr.val > val):
-					curr.left = helper(curr.left, curr)
+					helper(curr.left, curr)
 				else:
-					curr.right = helper(curr.right, curr)
+					helper(curr.right, curr)
 
-			return curr
+		helper(self.root)
 
-		self.root = helper(self.root)
+	def LeftRotate(self, target):
+		rightChild = target.right
+		target.right = rightChild.left
+		rightChild.left.parent = target
+		rightChild.left = target
+		if (target is self.root):
+			self.root = rightChild
+		else:
+			if (target.isLeftChild()):
+				target.parent.left = rightChild
+			else:
+				target.parent.right = rightChild
+		rightChild.parent = target.parent
+		target.parent = rightChild
+
+	def RightRotate(self, target):
+		LeftChild = target.left
+		target.left = LeftChild.right
+		LeftChild.right.parent = target
+		LeftChild.right = target
+		if (target is self.root):
+			self.root = LeftChild
+		else:
+			if (target.isLeftChild()):
+				target.parent.left = LeftChild
+			else:
+				target.parent.right = LeftChild
+		LeftChild.parent = target.parent
+		target.parent = LeftChild
 
 	def __Balancify(self, currNode):
 		parentNode = currNode.parent
@@ -82,21 +91,27 @@ class RBTree():
 					grandNode.color = 'B'
 				else:
 					self.__Balancify(grandNode)
-
-			# if parent is left child of grand parent
-			if (parentNode.isLeftChild()):
-				# Case2: sibling is black
-				else:
+			# Case2: sibling is black
+			else:
+				# if parent is left child of grand parent
+				if (parentNode.isLeftChild()):
 					# Case2-1: curr is right child
-					if (curr.isRightChild()):
-						pass
+					if (currNode.isRightChild()):
+						self.LeftRotate(parentNode)
+						self.__Balancify(parentNode)
 					# Case2-2: curr is left child
 					else:
-						pass
+						self.RightRotate(grandNode)
+						parentNode.color, grandNode.color = grandNode.color, parentNode.color
+				# if parent is right child of grand parent									
+				else:
+					if (currNode.isLeftChild()):
+						self.RightRotate(parentNode)
+						self.__Balancify(parentNode)
+					else:
+						self.LeftRotate(grandNode)
+						parentNode.color, grandNode.color = grandNode.color, parentNode.color
 
-			# if parent is right child of grand parent									
-			else:
-				pass
 
 	def DeleteNode(self, val):
 		pass
@@ -105,12 +120,12 @@ class RBTree():
 		if (curr is 0):
 			curr = self.root
 
-		if (curr):
+		if (curr is not NILNode):
 			self.PrintTreeInorder(curr.left)
 			print("{0}[{1}]->".format(curr.val, curr.color), end = ' ')
 			self.PrintTreeInorder(curr.right)
 
-	def PrintTreeLevelOrder(self) -> List[List[int]]:
+	def PrintTreeLevelOrder(self):
 		rtrnList = []
 
 		if (self.root is not None):
@@ -120,22 +135,30 @@ class RBTree():
 				currLevels = []
 				for _ in range(len(queue)):
 					curr = queue[0]
-					if (curr.left): queue.append(curr.left)
-					if (curr.right): queue.append(curr.right)
+					if (curr.left is not NILNode): queue.append(curr.left)
+					if (curr.right is not NILNode): queue.append(curr.right)
 					currLevels.append(curr.val)
+					currLevels.append(curr.color)
 					queue.pop(0)
 				rtrnList.append(currLevels)
 
-		print(rtrnList)
+		level = 1
+		for levels in rtrnList:
+			print('level {}'.format(level), levels)
+			level = level + 1
+
 
 tree1 = RBTree()
 
-tree1.InsertNode(3)
-tree1.InsertNode(2)
-tree1.InsertNode(1)
-tree1.InsertNode(4)
-tree1.InsertNode(5)
+inputList1 = [ x for x in range(10, 0, -1) ] # [ 4, 6, 7, 8, 2, 10 ] # [30, 10, 20, 50, 40, 5, 15, 7 ]
+print('input value:', inputList1, end ='\n\n')
+for inputVal in inputList1:
+	tree1.InsertNode(inputVal)
 
+print('Result(Inorder Treversal)')
 tree1.PrintTreeInorder()
+print('end\n')
+
+print('Result(LevelOrder Traversal)')
 tree1.PrintTreeLevelOrder()
-print('')
+

@@ -6,6 +6,7 @@ ListNodePtr InsertNode_Sorted(ListNodePtr head, Data item) {
 	ListNodePtr newNode = malloc(sizeof(ListNode));
 	newNode->data = item;
 
+	// if list is empty
 	if (head == NULL) {
 		head = newNode;
 		newNode->next = NULL;

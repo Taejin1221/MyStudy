@@ -87,6 +87,12 @@ void PrintGraph(AdjacentList adjList) {
 	}
 }
 
+void PrintList(ListNodePtr head) {
+	for (ListNodePtr curr = head; curr; curr = curr->next)
+		printf("[%d]->", curr->val);
+	printf("NULL\n");
+}
+
 /*void DFS(AdjacentList adjList) {
 
 }*/
@@ -99,7 +105,7 @@ void BFS(AdjacentList adjList) {
 
 	for (int i = 0; i < adjList.vertexSize; i++) {
 		if (visited[i] == UNVISIT) {
-			Enqueue(&queue, adjList.vertexes[i]->val);
+			Enqueue(&queue, i);
 			visited[i] = VISIT;
 		}
 		if (! isEmpty(&queue)) {
@@ -119,24 +125,49 @@ void BFS(AdjacentList adjList) {
 
 int main(void) {
 	AdjacentList adjList;
-	InitAdjList(&adjList, 5);
+	AdjacentListPtr adjListPtr = &adjList;
 
-	InsertintoGraph(&adjList, 0, 1);
-	InsertintoGraph(&adjList, 0, 2);
-	InsertintoGraph(&adjList, 0, 4);
-	InsertintoGraph(&adjList, 1, 0);
-	InsertintoGraph(&adjList, 1, 3);
-	InsertintoGraph(&adjList, 1, 4);
-	InsertintoGraph(&adjList, 2, 0);
-	InsertintoGraph(&adjList, 2, 4);
-	InsertintoGraph(&adjList, 3, 1);
-	InsertintoGraph(&adjList, 4, 0);
-	InsertintoGraph(&adjList, 4, 1);
-	InsertintoGraph(&adjList, 4, 2);
+	// InitAdjList(&adjList, 5);
+
+	// InsertintoGraph(&adjList, 0, 1);
+	// InsertintoGraph(&adjList, 0, 2);
+	// InsertintoGraph(&adjList, 0, 4);
+	// InsertintoGraph(&adjList, 1, 0);
+	// InsertintoGraph(&adjList, 1, 3);
+	// InsertintoGraph(&adjList, 1, 4);
+	// InsertintoGraph(&adjList, 2, 0);
+	// InsertintoGraph(&adjList, 2, 4);
+	// InsertintoGraph(&adjList, 3, 1);
+	// InsertintoGraph(&adjList, 4, 0);
+	// InsertintoGraph(&adjList, 4, 1);
+	// InsertintoGraph(&adjList, 4, 2);
+
+	InitAdjList(adjListPtr, 7);
+
+	InsertintoGraph(adjListPtr, 0, 1);
+	InsertintoGraph(adjListPtr, 0, 4);
+	InsertintoGraph(adjListPtr, 1, 0);
+	InsertintoGraph(adjListPtr, 1, 2);
+	InsertintoGraph(adjListPtr, 1, 3);
+	InsertintoGraph(adjListPtr, 2, 1);
+	InsertintoGraph(adjListPtr, 2, 5);
+	InsertintoGraph(adjListPtr, 3, 1);
+	InsertintoGraph(adjListPtr, 3, 4);
+	InsertintoGraph(adjListPtr, 3, 5);
+	InsertintoGraph(adjListPtr, 3, 6);
+	InsertintoGraph(adjListPtr, 4, 0);
+	InsertintoGraph(adjListPtr, 4, 3);
+	InsertintoGraph(adjListPtr, 4, 6);
+	InsertintoGraph(adjListPtr, 5, 2);
+	InsertintoGraph(adjListPtr, 5, 3);
+	InsertintoGraph(adjListPtr, 5, 6);
+	InsertintoGraph(adjListPtr, 6, 3);
+	InsertintoGraph(adjListPtr, 6, 4);
+	InsertintoGraph(adjListPtr, 6, 5);
 
 	PrintGraph(adjList);
 
-	BFS(adjList);
+	BFS(adjList); puts("");
 
 	return 0;
 }

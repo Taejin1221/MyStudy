@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+#define VISIT 1
+#define UNVISIT 0
+
 typedef struct _ListNode {
 	int val;
 	struct _ListNode* next;
@@ -24,8 +27,8 @@ void InitQueue(QueueListPtr queue) {
 	queue->front = queue->rare = NULL;
 }
 
-bool isEmpty(QueueList queue) {
-	return queue.front == NULL;
+bool isEmpty(QueueListPtr queue) {
+	return queue->front == NULL;
 }
 
 void Enqueue(QueueListPtr queue, int val) {
@@ -43,10 +46,13 @@ void Enqueue(QueueListPtr queue, int val) {
 
 int Dequeue(QueueListPtr queue) {
 	ListNodePtr remove = queue->front;
+	int rtrnVal = remove->val;
 
 	queue->front = queue->front->next;
 
 	free(remove);
+
+	return rtrnVal;
 }
 
 void InitAdjList(AdjacentListPtr adjList, int size) {
@@ -81,22 +87,37 @@ void PrintGraph(AdjacentList adjList) {
 	}
 }
 
-void DFS(AdjacentList adjList) {
+/*void DFS(AdjacentList adjList) {
 
-}
+}*/
 
 void BFS(AdjacentList adjList) {
 	QueueList queue;
 	InitQueue(&queue);
 
-	Enqueue(&queue, adjlist.vertex[0].val)
-	while (! isEmpty()) {
-		adjlist.vertex[Dequeue(&queue)].val
+	int visited[20] = { UNVISIT, };
+
+	for (int i = 0; i < adjList.vertexSize; i++) {
+		if (visited[i] == UNVISIT) {
+			Enqueue(&queue, adjList.vertexes[i]->val);
+			visited[i] = VISIT;
+		}
+		if (! isEmpty(&queue)) {
+			int currVertex = Dequeue(&queue);
+			printf("[%d]->", currVertex);
+			for (ListNodePtr temp = adjList.vertexes[currVertex]; temp; temp = temp->next) {
+				int adjVertex = temp->val;
+				if (visited[adjVertex] == UNVISIT) {
+					visited[adjVertex] = VISIT;
+					Enqueue(&queue, adjVertex);
+				}
+			}
+		}
 	}
 
 }
 
-void main(void) {
+int main(void) {
 	AdjacentList adjList;
 	InitAdjList(&adjList, 5);
 
@@ -114,4 +135,8 @@ void main(void) {
 	InsertintoGraph(&adjList, 4, 2);
 
 	PrintGraph(adjList);
+
+	BFS(adjList);
+
+	return 0;
 }

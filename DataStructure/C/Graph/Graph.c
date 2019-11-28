@@ -1,8 +1,5 @@
 // Graph.c
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-
+/* ========== Define ========== */
 #define VISIT 1
 #define UNVISIT 0
 
@@ -21,13 +18,14 @@ typedef struct _QueueList {
 	ListNodePtr front;
 	ListNodePtr rare;
 } QueueList, * QueueListPtr;
+/* ============================ */
 
-
+/* ========== Queue Function ========== */
 void InitQueue(QueueListPtr queue) {
 	queue->front = queue->rare = NULL;
 }
 
-bool isEmpty(QueueListPtr queue) {
+int isEmpty(QueueListPtr queue) {
 	return queue->front == NULL;
 }
 
@@ -54,7 +52,9 @@ int Dequeue(QueueListPtr queue) {
 
 	return rtrnVal;
 }
+/* ==================================== */
 
+/* ========== Graph Function ========== */
 void InitAdjList(AdjacentListPtr adjList, int size) {
 	adjList->vertexSize = size;
 	for (int i = 0; i < size; i++) {
@@ -87,34 +87,49 @@ void PrintGraph(AdjacentList adjList) {
 	}
 }
 
-void PrintList(ListNodePtr head) {
-	for (ListNodePtr curr = head; curr; curr = curr->next)
-		printf("[%d]->", curr->val);
-	printf("NULL\n");
+int visited_DFS[20];
+void DFS_helper(AdjacentList adjList, int currVertex) {
+	for (ListNodePtr temp = adjList.vertexes[currVertex]; temp; temp = temp->next) {
+		int adjVertex = temp->val;
+		if (visited_DFS[adjVertex] == UNVISIT) {
+			visited_DFS[adjVertex] = VISIT;
+			printf("[%d]->", adjVertex);
+			DFS_helper(adjList, adjVertex);
+		}
+	}
 }
 
-/*void DFS(AdjacentList adjList) {
+void DFS(AdjacentList adjList) {
+	for (int i = 0; i < adjList.vertexSize; i++)
+		visited_DFS[i] = UNVISIT;
 
-}*/
+	for (int i = 0; i < adjList.vertexSize; i++)
+		if (visited_DFS[i] == UNVISIT) {
+			visited_DFS[i] = VISIT;
+			printf("[%d]->", i);
+			DFS_helper(adjList, i);
+		}
+}
 
 void BFS(AdjacentList adjList) {
 	QueueList queue;
 	InitQueue(&queue);
 
-	int visited[20] = { UNVISIT, };
+	int visited_BFS[20] = { UNVISIT, };
 
 	for (int i = 0; i < adjList.vertexSize; i++) {
-		if (visited[i] == UNVISIT) {
+		if (visited_BFS[i] == UNVISIT) {
 			Enqueue(&queue, i);
-			visited[i] = VISIT;
+			visited_BFS[i] = VISIT;
 		}
+		
 		if (! isEmpty(&queue)) {
 			int currVertex = Dequeue(&queue);
 			printf("[%d]->", currVertex);
 			for (ListNodePtr temp = adjList.vertexes[currVertex]; temp; temp = temp->next) {
 				int adjVertex = temp->val;
-				if (visited[adjVertex] == UNVISIT) {
-					visited[adjVertex] = VISIT;
+				if (visited_BFS[adjVertex] == UNVISIT) {
+					visited_BFS[adjVertex] = VISIT;
 					Enqueue(&queue, adjVertex);
 				}
 			}
@@ -122,52 +137,4 @@ void BFS(AdjacentList adjList) {
 	}
 
 }
-
-int main(void) {
-	AdjacentList adjList;
-	AdjacentListPtr adjListPtr = &adjList;
-
-	// InitAdjList(&adjList, 5);
-
-	// InsertintoGraph(&adjList, 0, 1);
-	// InsertintoGraph(&adjList, 0, 2);
-	// InsertintoGraph(&adjList, 0, 4);
-	// InsertintoGraph(&adjList, 1, 0);
-	// InsertintoGraph(&adjList, 1, 3);
-	// InsertintoGraph(&adjList, 1, 4);
-	// InsertintoGraph(&adjList, 2, 0);
-	// InsertintoGraph(&adjList, 2, 4);
-	// InsertintoGraph(&adjList, 3, 1);
-	// InsertintoGraph(&adjList, 4, 0);
-	// InsertintoGraph(&adjList, 4, 1);
-	// InsertintoGraph(&adjList, 4, 2);
-
-	InitAdjList(adjListPtr, 7);
-
-	InsertintoGraph(adjListPtr, 0, 1);
-	InsertintoGraph(adjListPtr, 0, 4);
-	InsertintoGraph(adjListPtr, 1, 0);
-	InsertintoGraph(adjListPtr, 1, 2);
-	InsertintoGraph(adjListPtr, 1, 3);
-	InsertintoGraph(adjListPtr, 2, 1);
-	InsertintoGraph(adjListPtr, 2, 5);
-	InsertintoGraph(adjListPtr, 3, 1);
-	InsertintoGraph(adjListPtr, 3, 4);
-	InsertintoGraph(adjListPtr, 3, 5);
-	InsertintoGraph(adjListPtr, 3, 6);
-	InsertintoGraph(adjListPtr, 4, 0);
-	InsertintoGraph(adjListPtr, 4, 3);
-	InsertintoGraph(adjListPtr, 4, 6);
-	InsertintoGraph(adjListPtr, 5, 2);
-	InsertintoGraph(adjListPtr, 5, 3);
-	InsertintoGraph(adjListPtr, 5, 6);
-	InsertintoGraph(adjListPtr, 6, 3);
-	InsertintoGraph(adjListPtr, 6, 4);
-	InsertintoGraph(adjListPtr, 6, 5);
-
-	PrintGraph(adjList);
-
-	BFS(adjList); puts("");
-
-	return 0;
-}
+/* ==================================== */

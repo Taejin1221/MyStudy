@@ -2,6 +2,21 @@
 #include <stdlib.h>
 #include "List.h"
 
+ListNodePtr InsertNode_First(ListNodePtr head Data item) {
+	ListNodePtr newNode = malloc(sizeof(ListNode));
+	newNode->data = item;
+
+	if (head == NULL) {
+		head = newNode;
+		newNode->next = NULL;
+	} else {
+		newNode->next = head;
+		head = newNode;
+	}
+
+	return head;
+}
+
 ListNodePtr InsertNode_Sorted(ListNodePtr head, Data item) {
 	ListNodePtr newNode = malloc(sizeof(ListNode));
 	newNode->data = item;

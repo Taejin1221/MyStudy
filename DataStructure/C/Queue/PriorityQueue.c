@@ -1,7 +1,29 @@
 /* PriorityQueue.c */
-void BuildMaxHeap(int heap[], int size);
+void Swap(intPtr a, intPtr b) {
+	int temp = *a;
+	*a = *b;
+	*b = temp;
+}
 
-void heapify(int heap[], int size);
+void MaxHeapify(int arr[], int me, int len) {
+	int leftChild = me * 2, rightChild = me * 2 + 1;
+	int largeChild;
+
+	if (rightChild <= len)
+		largeChild = ((arr[leftChild] < arr[rightChild]) ? rightChild : leftChild);
+	else if (leftChild <= len) largeChild = leftChild;
+	else return;
+
+	if (arr[me] <= arr[largeChild]) {
+		Swap(&arr[me], &arr[largeChild]);
+		MaxHeapify(arr, largeChild, len);
+	}
+}
+
+void BuildMaxHeap(int arr[], int len) {
+	for (int i = len / 2; i > 0; i--)
+		MaxHeapify(arr, i, len);
+}
 
 void Enqueue(int queue[], int* size, int data) {
 	int me = *size;
@@ -14,7 +36,7 @@ int Dequeue(int queue[], int* size) {
 	int rtrn = queue[1];
 	queue[1] = queue[--(*size)];
 
-	heapify(queue, 1, *size);
+	MaxHeapify(queue, 1, *size);
 
 	return rtrn;
 }

@@ -60,7 +60,7 @@ TreeNodePtr InsertTreeNode_Iterator(TreeNodePtr root, Data item) {
 	return root;
 }
 
-// Leftmost node
+// Leftmost node(자기보다 큰 자식들중 가장 작은 자식)
 TreeNodePtr MinValueRight(TreeNodePtr root) {
 	TreeNodePtr temp = root;
 	while (temp->left)
@@ -69,6 +69,11 @@ TreeNodePtr MinValueRight(TreeNodePtr root) {
 	return temp;
 }
 
+/*
+case1: root has no child
+case2: root has only one child (left or right)
+case3: root has two child
+*/
 TreeNodePtr DeleteNode(TreeNodePtr root, Data item) {
 	if (! root) return NULL;
 	else {
@@ -77,19 +82,21 @@ TreeNodePtr DeleteNode(TreeNodePtr root, Data item) {
 		else if (CompareData(root->data, item) < 0)
 			root->right = DeleteNode(root->right, item);
 		else {
-			if (! root->left) {
+			// if left child is null
+			if (! root->left) {	// case1, case2
 				TreeNodePtr removed = root;
 				root = root->right;
 				free(removed);
 
 				return root;
+			// if right child is null
 			} else if (! root->right) {
 				TreeNodePtr removed = root;
 				root = root->left;
 				free(removed);
 
 				return root;
-			} else {
+			} else { // case 3
 				TreeNodePtr change = MinValueRight(root->right);
 				root->data = change->data;
 

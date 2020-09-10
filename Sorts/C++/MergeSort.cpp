@@ -1,39 +1,34 @@
-char nums[1000][11];
+// MergeSort.cpp
+void Merge( int arr[], int start, int mid, int end ) {
+	int leftSize = mid - start + 1, rightSize = end - ( mid + 1 ) + 1;
+	int* leftArr = new int[leftSize];
+	int* rightArr = new int[rightSize];
 
-bool Compare( char* str1, char* str2 ) {
-	if ( strcmp( str1, str2 ) >= 0 )
-		return true;
-	else
-		return false;
+	for ( int i = start, idx = 0; i <= mid; i++, idx++ )
+		leftArr[idx] = arr[i];
+
+	for ( int i = mid + 1, idx = 0; i <= end; i++, idx++ )
+		rightArr[idx] = arr[i];
+
+	int leftIdx = 0, rightIdx = 0, arrIdx = start;
+	while ( leftIdx < leftSize && rightIdx < rightSize )
+		arr[arrIdx++] = ( leftArr[leftIdx] <= rightArr[rightIdx] ) ? leftArr[leftIdx++] : rightArr[rightIdx++];
+
+	while ( leftIdx < leftSize )
+		arr[arrIdx++] = leftArr[leftIdx++];
+
+	while ( rightIdx < rightSize )
+		arr[arrIdx++] = rightArr[rightIdx++];
+
+	delete[] leftArr;
+	delete[] rightArr;
 }
 
-void MergeSort( int start, int end ) {
-	if ( start < end) {
+void MergeSort( int arr[], int start, int end ) {
+	if ( start < end ) {
 		int mid = ( start + end ) / 2;
-		MergeSort( start, mid );
-		MergeSort( mid + 1, end );
-		Merge( start, mid, end );
+		MergeSort( arr, start, mid );
+		MergeSort( arr, mid + 1, end );
+		Merge( arr, start, mid, end );
 	}
-}
-
-void Merge( int start, int mid, int end ) {
-	char copyNums[1000][11];
-	int originIdx = 0;
-	for ( int i = 0; i < end - start; i++ )
-		strcpy( copyNums[i], nums[originIdx++] );
-	originIdx = 0;
-
-	int leftIdx = 0, leftLen = mid + 1 - start;
-	int rightIdx = ( end - mid ) + 1, rightLen = end - mid;
-	while ( leftIdx < leftLen && rightIdx < rightLen ) {
-		if ( strcmp( copyNums[leftIdx], copyNums[rightIdx] ) >= 0 )
-			strcpy( nums[originIdx++], copyNums[leftIdx++] );
-		else
-			strcpy( nums[originIdx++], copyNums[rightIdx++] );
-	}
-
-	while ( leftIdx < leftLen )
-		strcpy( nums[originIdx++], copyNums[leftIdx++] );
-	while ( rightIdx < rightLen )
-		strcpy( nums[originIdx++], copyNums[rightIdx++] );
 }

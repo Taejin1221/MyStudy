@@ -12,14 +12,12 @@
     * Insertion
     * Merge
     * Quick
-
   * Fibonacci Sequence
     * Recursion
     * Memoization
     * Dynamic Programming
     * Sliding Window
     * Matrix Exponential
-    
   * Graph
     * DFS
     * BFS
@@ -27,19 +25,15 @@
 
 * Data Structure
   * Stack
-  
   * Queue
-  
   * Linked List
     * Singly Linked List
     * Circular Linked List
     * Doubly Linked List
-    
   * Tree
     * Binary Tree
     * Binary Search Tree
     * Heap
-    
   * Graph
     
 ## To Do

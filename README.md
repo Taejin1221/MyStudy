@@ -26,6 +26,10 @@
     * Dijkstra Algorithm
 
 * Data Structure
+  * Stack
+  
+  * Queue
+  
   * Linked List
     * Singly Linked List
     * Circular Linked List

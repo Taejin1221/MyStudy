@@ -22,25 +22,32 @@
     * Sliding Window (C++)
     * Matrix Exponential (C++)
   * Graph
-    * DFS
-    * BFS
+    * DFS (C)
+    * BFS (C)
     * Dijkstra Algorithm
 
 * Data Structure
-  * Stack
+  * Stack (Python3)
   * Queue
+    * Linear Queue (Java, Python3)
+    * Priority Queue (C, Python3)
   * Linked List
-    * Singly Linked List
-    * Circular Linked List
-    * Doubly Linked List
+    * Singly Linked List (C, Python3)
+    * Circular Linked List (C)
+    * Doubly Linked List (C)
   * Tree
-    * Binary Tree
-    * Binary Search Tree
-    * Heap
+    * Binary Tree (Python3)
+    * Binary Search Tree (Java, Python3)
+    * Heap (C)
   * Graph
+    * AdjList (C, Python3)
+    * DFS (C, Python3)
+    * BFS (C, Python3)
     
 ## To Do
 * 이 Repository의 전체적인 체계화와 정리
+  * Data Structure
+    * java, Python3
 * Algorithm
   * Graph
       * Dijkstra Algorithm
@@ -49,4 +56,7 @@
 * Data Structure
   * C++
     * Trees
+      * BST
     * Graph
+  * Python3
+    * Linked List Delete

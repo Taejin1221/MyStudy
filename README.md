@@ -7,17 +7,20 @@
 ## 종류
 * Algorithm
   * Sort
-    * Bubble
-    * Selection
-    * Insertion
-    * Merge
-    * Quick
+    * Bubble Sort (C, C++)
+    * Selection Sort (C, C++)
+    * Insertion Sort (C, C++)
+    * Merge Sort (C, C++, Java, Python3)
+    * Quick Sort (C, C++)
+    * Heap Sort (C)
+    * Counting Sort (C)
+    * Radix Sort (C)
   * Fibonacci Sequence
-    * Recursion
-    * Memoization
-    * Dynamic Programming
-    * Sliding Window
-    * Matrix Exponential
+    * Recursion (C++)
+    * Memoization (C++)
+    * Dynamic Programming (C++)
+    * Sliding Window (C++)
+    * Matrix Exponential (C++)
   * Graph
     * DFS
     * BFS

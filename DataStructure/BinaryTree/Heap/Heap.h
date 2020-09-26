@@ -1,7 +1,7 @@
 #ifndef HEAP_H
 #define HEAP_H
 
-#include "../Data.h"
+#include "../../../Data.h"
 
 #define MAX_HEAP_SIZE 100
 

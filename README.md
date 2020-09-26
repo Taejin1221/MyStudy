@@ -35,8 +35,7 @@
     * Singly Linked List (C, Python3)
     * Circular Linked List (C)
     * Doubly Linked List (C)
-  * Tree
-    * Binary Tree (Python3)
+  * Binary Tree (Python3)
     * Binary Search Tree (Java, Python3)
     * Heap (C)
   * Graph
@@ -47,12 +46,14 @@
 ## To Do
 * 이 Repository의 전체적인 체계화와 정리
   * Data Structure
-    * java, Python3
+    * java BST import 경로 다시 설정
 * Algorithm
   * Graph
       * Dijkstra Algorithm
       * Bellman-Ford Algorithm
       * Floyd-Warshall Algorithm
+  * Binary Tree
+      * Preorder, Inorder, Postorder, Leverlorder Traversals
 * Data Structure
   * C++
     * Trees

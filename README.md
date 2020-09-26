@@ -22,8 +22,8 @@
     * Sliding Window (C++)
     * Matrix Exponential (C++)
   * Graph
-    * DFS (C)
-    * BFS (C)
+    * DFS (C, C++)
+    * BFS (C, C++)
     * Dijkstra Algorithm
 
 * Data Structure

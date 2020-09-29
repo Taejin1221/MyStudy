@@ -3,6 +3,7 @@
   
 * **Goal**
   * 나중에 언제든 그 알고리즘이 궁금 할 때 이 Repository만 보고 이해할 수 있도록
+  * 알고리즘뿐만 아니라 전공 공부도 포함
 
 ## 종류
 * Algorithm
@@ -42,6 +43,8 @@
     * AdjList (C, Python3)
     * DFS (C, Python3)
     * BFS (C, Python3)
+* Image Processing
+  * Raw File 좌우반전 (C)
     
 ## To Do
 * 이 Repository의 전체적인 체계화와 정리

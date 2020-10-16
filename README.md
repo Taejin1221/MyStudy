@@ -26,6 +26,9 @@
     * DFS (C, C++)
     * BFS (C, C++)
     * Dijkstra Algorithm
+  * Mathematics
+    * GCD (C++)
+    * LCM (C++)
 
 * Data Structure
   * Stack (Python3)
@@ -43,6 +46,8 @@
     * AdjList (C, Python3)
     * DFS (C, Python3)
     * BFS (C, Python3)
+  * BigInteger (C++)
+
 * Image Processing
   * Raw File 좌우반전 (C)
     

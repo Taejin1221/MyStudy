@@ -42,6 +42,9 @@
   * Binary Tree (Python3)
     * Binary Search Tree (Java, Python3)
     * Heap (C)
+  * Tree
+    * Union Find Tree (C++)
+    * Segment Tree (C++)
   * Graph
     * AdjList (C, Python3)
     * DFS (C, Python3)

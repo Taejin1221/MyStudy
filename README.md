@@ -63,6 +63,9 @@
       * Dijkstra Algorithm
       * Bellman-Ford Algorithm
       * Floyd-Warshall Algorithm
+      * MST
+        * Prim Algorithm
+        * Kruskal Algorithm
   * Binary Tree
       * Preorder, Inorder, Postorder, Leverlorder Traversals
 * Data Structure

@@ -35,19 +35,17 @@ int main(void) {
 	fread( inputImg, sizeof(BYTE), fileSize, fp );
 	fclose(fp);
 
-	fp = fopen( "SemiconductNoise512_filtered.raw", "wb" );
-
 	BYTE* outputImg = (BYTE*)malloc( sizeof(BYTE) * fileSize );
 	memset( outputImg, 0, fileSize );
 
 	BYTE* values = (BYTE*)malloc( sizeof(BYTE) * filterSize );
 	for ( int idx = WIDTH + 1; idx < (HEIGHT - 2) * WIDTH + (WIDTH - 1); idx++ ) {
-		if ( (idx % WIDTH == 0) && ((idx + 1) % WIDTH == 0) ) {
+		if ( (idx % WIDTH != 0) && ((idx + 1) % WIDTH != 0) ) {
 			int valueIdx = 0;
 			for ( int i = -(N / 2); i <= (N / 2); i++ ) {
 				for ( int j = -(M / 2); j <= (M / 2); j++ ) {
 					int newIdx = idx + i * WIDTH + j;
-					values[valueIdx++] = newIdx;
+					values[valueIdx++] = inputImg[newIdx];
 				}
 			}
 			BubbleSort( values, filterSize );
@@ -58,8 +56,13 @@ int main(void) {
 
 	}
 
-	fwrite( outputImg, sizeof(BYTE), fileSize, fp );
+	fp = fopen( "SemiconductNoise512_filtered.raw", "wb" );
+	if ( fp == NULL ) {
+		printf("Error to file open\n" );
+		return -1;
+	}
 
+	fwrite( outputImg, sizeof(BYTE), fileSize, fp );
 	fclose( fp );
 
 	free( inputImg );

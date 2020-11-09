@@ -63,6 +63,7 @@
       * Dijkstra Algorithm
       * Bellman-Ford Algorithm
       * Floyd-Warshall Algorithm
+      * Network Flow
       * MST
         * Prim Algorithm
         * Kruskal Algorithm

@@ -64,6 +64,7 @@
       * Bellman-Ford Algorithm
       * Floyd-Warshall Algorithm
       * Network Flow
+      * Bipartite Matching
       * MST
         * Prim Algorithm
         * Kruskal Algorithm

@@ -70,6 +70,8 @@
         * Kruskal Algorithm
   * Binary Tree
       * Preorder, Inorder, Postorder, Leverlorder Traversals
+  * Math
+      * 페르마의 소정리
 * Data Structure
   * C++
     * Trees

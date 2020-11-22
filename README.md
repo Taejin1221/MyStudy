@@ -72,6 +72,7 @@
       * Preorder, Inorder, Postorder, Leverlorder Traversals
   * Math
       * 페르마의 소정리
+      * 행렬 곱셈, 제곱
 * Data Structure
   * C++
     * Trees

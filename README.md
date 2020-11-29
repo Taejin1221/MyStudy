@@ -63,6 +63,7 @@
       * Dijkstra Algorithm
       * Bellman-Ford Algorithm
       * Floyd-Warshall Algorithm
+      * Topological Sort
       * Network Flow
       * Bipartite Matching
       * MST

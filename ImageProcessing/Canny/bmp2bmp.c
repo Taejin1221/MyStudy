@@ -10,7 +10,7 @@ int main(void) {
 	BITMAPINFOHEADER infoHeader;
 	RGBQUAD rgbQuad[256];
 
-	FILE* fp = fopen( "Lenna.bmp", "rb" );
+	FILE* fp = fopen( "Lenna(gray).bmp", "rb" );
 
 	fread( &fileHeader, sizeof(BITMAPFILEHEADER), 1, fp );
 	fread( &infoHeader, sizeof(BITMAPINFOHEADER), 1, fp );

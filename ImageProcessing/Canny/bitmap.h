@@ -4,6 +4,8 @@
 
 #pragma pack(2)
 
+#define WIDTHBYTES(b) ( ( ( b ) + 3 ) / 4 * 4 )
+
 typedef unsigned char BYTE;
 typedef unsigned short WORD;
 typedef unsigned int DWORD;

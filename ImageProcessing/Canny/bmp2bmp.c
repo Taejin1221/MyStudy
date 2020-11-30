@@ -19,7 +19,6 @@ int main(void) {
 	INT width = infoHeader.biWidth, height = infoHeader.biHeight;
 	INT stepWidth = WIDTHBYTES( ( infoHeader.biBitCount / 8 ) * width );
 
-	fseek( fp, fileHeader.bfOffBits, SEEK_SET );
 	BYTE** inputImg = (BYTE**)malloc(sizeof(BYTE*) * height);
 	for ( int i = 0; i < height; i++ ) {
 		inputImg[i] = (BYTE*)malloc(sizeof(BYTE) * stepWidth);
@@ -33,7 +32,6 @@ int main(void) {
 	fwrite( &fileHeader, sizeof(BITMAPFILEHEADER), 1, fp );
 	fwrite( &infoHeader, sizeof(BITMAPINFOHEADER), 1, fp );
 	fwrite( rgbQuad, sizeof(RGBQUAD), 256, fp );
-	fseek( fp, fileHeader.bfOffBits, SEEK_SET );
 
 	for ( int i = 0; i < height; i++ )
 		fwrite( inputImg[i], sizeof(BYTE), stepWidth, fp );

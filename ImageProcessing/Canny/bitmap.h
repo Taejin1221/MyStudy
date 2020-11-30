@@ -1,6 +1,8 @@
 // bitmap.h
 #ifndef BITMAP
-#define BITMAP BITMAP
+#define BITMAP
+
+#pragma pack(2)
 
 typedef unsigned char BYTE;
 typedef unsigned short WORD;

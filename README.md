@@ -70,7 +70,7 @@
         * Prim Algorithm
         * Kruskal Algorithm
   * Binary Tree
-      * Preorder, Inorder, Postorder, Leverlorder Traversals
+      * Preorder, Inorder, Postorder, Levelorder Traversals
   * Math
       * 페르마의 소정리
       * 행렬 곱셈, 제곱

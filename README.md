@@ -25,7 +25,8 @@
   * Graph
     * DFS (C, C++)
     * BFS (C, C++)
-    * Dijkstra Algorithm
+    * Dijkstra Algorithm (C++)
+    * Prim Algorithm (C++)
   * Mathematics
     * GCD (C++)
     * LCM (C++)

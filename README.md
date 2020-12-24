@@ -7,15 +7,17 @@
 
 ## 종류
 * Algorithm
-  * Sort
-    * Bubble Sort (C, C++)
-    * Selection Sort (C, C++)
-    * Insertion Sort (C, C++)
-    * Merge Sort (C, C++, Java, Python3)
-    * Quick Sort (C, C++)
-    * Heap Sort (C)
-    * Counting Sort (C)
-    * Radix Sort (C)
+  <detail>
+    <summary> Sort </summary>
+      * Bubble Sort (C, C++)
+      * Selection Sort (C, C++)
+      * Insertion Sort (C, C++)
+      * Merge Sort (C, C++, Java, Python3)
+      * Quick Sort (C, C++)
+      * Heap Sort (C)
+      * Counting Sort (C)
+      * Radix Sort (C)
+  </detail>
   * Fibonacci Sequence
     * Recursion (C++)
     * Memoization (C++)

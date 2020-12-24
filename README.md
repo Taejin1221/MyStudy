@@ -6,18 +6,18 @@
   * 알고리즘뿐만 아니라 전공 공부도 포함
 
 ## 종류
+<details>
+  <summary> Sort </summary>
+    * Bubble Sort (C, C++)
+    * Selection Sort (C, C++)
+    * Insertion Sort (C, C++)
+    * Merge Sort (C, C++, Java, Python3)
+    * Quick Sort (C, C++)
+    * Heap Sort (C)
+    * Counting Sort (C)
+    * Radix Sort (C)
+</details>
 * Algorithm
-  <detail>
-    <summary> Sort </summary>
-      * Bubble Sort (C, C++)
-      * Selection Sort (C, C++)
-      * Insertion Sort (C, C++)
-      * Merge Sort (C, C++, Java, Python3)
-      * Quick Sort (C, C++)
-      * Heap Sort (C)
-      * Counting Sort (C)
-      * Radix Sort (C)
-  </detail>
   * Fibonacci Sequence
     * Recursion (C++)
     * Memoization (C++)

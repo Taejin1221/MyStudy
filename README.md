@@ -47,7 +47,7 @@
 </details>
 
 ## Data Structure
-* Stack (Python3)
+Stack (Python3)
 
 <details>
 <summary> Queue </summary>
@@ -86,7 +86,7 @@
   * BFS (C, Python3)
 </details>
 
-* BigInteger (C++)
+BigInteger (C++)
     
 # To Do
 * 이 Repository의 전체적인 체계화와 정리

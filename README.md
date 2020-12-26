@@ -97,7 +97,6 @@ BigInteger (C++)
 <details>
   <summary> Graph </summary>
  
-  * Dijkstra Algorithm
   * Bellman-Ford Algorithm
   * Floyd-Warshall Algorithm
   * Topological Sort

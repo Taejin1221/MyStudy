@@ -36,6 +36,7 @@
 * DFS (C, C++)
 * BFS (C, C++)
 * Dijkstra Algorithm (C++)
+* Bellman-Ford Algorithm (C++)
 * Prim Algorithm (C++)
 </details>
 
@@ -44,6 +45,12 @@
 
 * GCD (C++)
 * LCM (C++)
+</details>
+
+<details>
+<summary> String </summary>
+
+* Knuth-Morris-Pratt Algorithm (C++)
 </details>
 
 ## Data Structure
@@ -97,13 +104,11 @@ BigInteger (C++)
 <details>
   <summary> Graph </summary>
  
-  * Bellman-Ford Algorithm
   * Floyd-Warshall Algorithm
   * Topological Sort
   * Network Flow
   * Bipartite Matching
   * MST
-    * Prim Algorithm
     * Kruskal Algorithm
 </details>
 

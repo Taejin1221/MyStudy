@@ -37,7 +37,8 @@
 * BFS (C, C++)
 * Dijkstra Algorithm (C++)
 * Bellman-Ford Algorithm (C++)
-* Prim Algorithm (C++)
+  * MST
+    * Prim Algorithm (C++)
 </details>
 
 <details>

@@ -35,10 +35,12 @@
 
 * DFS (C, C++)
 * BFS (C, C++)
-* Dijkstra Algorithm (C++)
-* Bellman-Ford Algorithm (C++)
-  * MST
-    * Prim Algorithm (C++)
+* Shortest Path
+  * Dijkstra Algorithm (C++)
+  * Bellman-Ford Algorithm (C++)
+  * Floyed-Warshall Algorithm (C++)
+* MST
+  * Prim Algorithm (C++)
 </details>
 
 <details>
@@ -105,7 +107,6 @@ BigInteger (C++)
 <details>
   <summary> Graph </summary>
  
-  * Floyd-Warshall Algorithm
   * Topological Sort
   * Network Flow
   * Bipartite Matching

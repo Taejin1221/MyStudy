@@ -9,7 +9,7 @@ vector<int> KMP( string text, string pattern ) {
 	int textSize = text.size(), patternSize = pattern.size();
 
 	vector<int> fail ( patternSize );
-	for ( int i = 0, j = 1; i < patternSize; i++ ) {
+	for ( int i = 1, j = 0; i < patternSize; i++ ) {
 		while ( j > 0 && pattern[i] != pattern[j] )
 			j = fail[j - 1];
 

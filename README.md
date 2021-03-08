@@ -38,7 +38,7 @@
 * Shortest Path
   * Dijkstra Algorithm (C++)
   * Bellman-Ford Algorithm (C++)
-  * Floyed-Warshall Algorithm (C++)
+  * Floyd-Warshall Algorithm (C++)
 * MST
   * Prim Algorithm (C++)
 </details>

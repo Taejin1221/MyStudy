@@ -2,7 +2,7 @@
 int parents[MAX_NODE_SIZE];
 
 int Find( int target ) {
-	return ( (parents[target] == target) ? target : Find(parents[target] ) );
+	return (parents[target] = (parents[target] == target) ? target : Find(parents[target]));
 }
 
 void Union( int a, int b ) {

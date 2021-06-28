@@ -24,10 +24,10 @@ vector<int> KMP( string text, string pattern ) {
 
 		if ( text[i] == pattern[j] ) {
 			j++;
-			if ( j == patternSize )
+			if ( j == patternSize ) {
 				indexes.push_back( i - patternSize + 1 );
-			else
 				j = fail[j - 1];
+			}	
 		}
 	}
 

@@ -18,7 +18,7 @@ vector<int> KMP( string text, string pattern ) {
 	}
 
 	vector<int> indexes;
-	for ( int i = 0; j = 0; i < textSize; i++ ) {
+	for ( int i = 0, j = 0; i < textSize; i++ ) {
 		while ( j > 0 && text[i] != pattern[j] )
 			j = fail[j - 1];
 
